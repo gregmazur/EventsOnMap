@@ -31,5 +31,6 @@ public class Test {
         session.save(event);
         session.save(route);
         session.getTransaction().commit();
+        session.close();
     }
 }

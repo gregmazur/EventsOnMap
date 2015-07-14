@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class BaseEntity {
+public abstract class BaseEntity {
     @Id @GeneratedValue
     private long id;
     @Column

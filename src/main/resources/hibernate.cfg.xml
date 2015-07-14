@@ -15,10 +15,10 @@
 
         <property name="show_sql">true</property>
 
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
         <mapping class="home.map.events.entity.BaseEntity"/>
-        <mapping class="home.map.events.entity.CreatorsObject"/>
+
         <mapping class="home.map.events.entity.UserDetail"/>
         <mapping class="home.map.events.entity.Event"/>
         <mapping class="home.map.events.entity.Route"/>

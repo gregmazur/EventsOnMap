@@ -18,6 +18,8 @@ public class Point {
     @NotNull
     private double latitude;
 
+    public Point(){}
+
     public Point(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;

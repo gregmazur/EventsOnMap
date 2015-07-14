@@ -18,10 +18,13 @@ public class Test {
         Point point = new Point(223.56,234.435);
         Route route = new Route(user);
         Event event = new Event(user, point);
+        event.setName("Event");
+        event.setPoint(point);
         route.getRouteEvents().add(event);
         route.getRoutePoints().add(point);
         route.setName("mainRoute");
         route.getUsersTagged().add(user2);
+        route.getUsersTagged().add(user);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();

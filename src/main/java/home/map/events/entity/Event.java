@@ -7,13 +7,14 @@ import javax.persistence.Entity;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Event extends CreatorsObject {
+public class Event extends BaseEntity {
     @Embedded
     private Point point;
 
     public Event(UserDetail createdBy, Point point) {
-        super(createdBy);
+        super();
         this.point = point;
+        setCreatedBy(createdBy);
     }
 
     public Point getPoint() {

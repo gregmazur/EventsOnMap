@@ -11,14 +11,15 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Route extends CreatorsObject {
+public class Route extends BaseEntity {
     @ElementCollection
     private Collection<Point> routePoints = new ArrayList<Point>();
     @OneToMany
     private Collection<Event> routeEvents = new ArrayList<Event>();
 
     public Route(UserDetail createdBy) {
-        super(createdBy);
+        super();
+        setCreatedBy(createdBy);
     }
 
     public Collection<Point> getRoutePoints() {

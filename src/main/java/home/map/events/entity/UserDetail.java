@@ -1,5 +1,6 @@
 package home.map.events.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -7,10 +8,15 @@ import javax.persistence.Entity;
  */
 @Entity
 public class UserDetail extends BaseEntity {
+    @Column
     private String login;
+    @Column
     private String password;
+    @Column
     private String city;
+    @Column
     private long quantityOfEventsPosted;
+    @Column
     private long quantityOfRoutesPosted;
 
     public UserDetail(String login, String password, String city) {

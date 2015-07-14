@@ -7,7 +7,7 @@ import javax.persistence.Entity;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Event extends Ancestry {
+public class Event extends CreatorsObject {
     @Embedded
     private Point point;
 

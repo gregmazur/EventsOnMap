@@ -1,9 +1,6 @@
 package home.map.events.entity;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -12,12 +9,12 @@ import java.util.HashSet;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Ancestry extends BaseEntity {
+public abstract class CreatorsObject extends BaseEntity {
+    @Column
     private UserDetail createdBy;
-    @ElementCollection
+    @OneToMany
     private Collection <UserDetail> usersTagged = new HashSet<UserDetail>();
-    public Ancestry(UserDetail createdBy){
+    public CreatorsObject(UserDetail createdBy){
         super();
         this.createdBy = createdBy;
         usersTagged.add(createdBy);

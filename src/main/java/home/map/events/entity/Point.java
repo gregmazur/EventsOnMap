@@ -4,11 +4,14 @@ package home.map.events.entity;
  * Created by greg on 14.07.15.
  */
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Point {
+    @Column
     private double longitude;
+    @Column
     private double latitude;
 
     public Point(double longitude, double latitude) {

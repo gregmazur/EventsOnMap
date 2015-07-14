@@ -8,14 +8,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("NUMERIC")
+
 public class BaseEntity {
     @Id @GeneratedValue
     private long id;
+    @Column
     private String name;
+    @Column
     private String description;
+    @Column
     private Date createdAt;
+    @Column
     private Date modifiedAt;
 
     public BaseEntity(){

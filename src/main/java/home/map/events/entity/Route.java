@@ -2,6 +2,7 @@ package home.map.events.entity;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -10,10 +11,10 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Route extends Ancestry {
+public class Route extends CreatorsObject {
     @ElementCollection
     private Collection<Point> routePoints = new ArrayList<Point>();
-    @ElementCollection
+    @OneToMany
     private Collection<Event> routeEvents = new ArrayList<Event>();
 
     public Route(UserDetail createdBy) {

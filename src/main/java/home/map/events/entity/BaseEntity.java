@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-
+@Inheritance(strategy = InheritanceType.JOINED)
 public class BaseEntity {
     @Id @GeneratedValue
     private long id;

@@ -9,6 +9,7 @@ import java.util.HashSet;
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class CreatorsObject extends BaseEntity {
     @Column
     private UserDetail createdBy;

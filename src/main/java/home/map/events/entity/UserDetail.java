@@ -2,11 +2,15 @@ package home.map.events.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * Created by greg on 14.07.15.
  */
 @Entity
+@Table(name = "users")
+@NamedQuery(name = "UserDetail.getUser", query = "FROM UserDetail WHERE login=:login AND password=:password")
 public class UserDetail extends BaseEntity {
     @Column
     private String login;

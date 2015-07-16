@@ -16,6 +16,9 @@ public class Route extends BaseEntity {
     private Collection<Point> routePoints = new ArrayList<Point>();
     @OneToMany
     private Collection<Event> routeEvents = new ArrayList<Event>();
+    @OneToMany
+    private Collection<Comment> comments = new ArrayList<Comment>();
+
 
     public Route(UserDetail createdBy) {
         super();

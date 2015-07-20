@@ -18,4 +18,5 @@ public interface EventDAO {
     Event getEventByUserCreated(UserDetail user);
     void addCommentToEvent (Comment comment, Event event);
     Collection<Comment> getCommentsOfEvent(Event  event);
+    Collection<Event> getAllEvents();
 }

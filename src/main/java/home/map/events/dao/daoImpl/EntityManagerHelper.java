@@ -21,7 +21,7 @@ public class EntityManagerHelper {
 
 
 
-    private static synchronized void initialize() {
+    private static  void initialize() {
         entityManager = Persistence.createEntityManagerFactory("DB").createEntityManager();
     }
 

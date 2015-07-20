@@ -19,16 +19,14 @@ import java.util.HashSet;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class BaseEntity {
-    @Id
-    @GeneratedValue
+public  class BaseEntity {
+
     private long id;
-    @Column
+
     private String name;
-    @Column
+
     private String description;
-    @Column
-    @Temporal(TemporalType.DATE)
+
     private Date createdAt;
 
     private Date modifiedAt;
@@ -62,7 +60,8 @@ public abstract class BaseEntity {
     public void setUsersTagged(Collection<UserDetail> usersTagged) {
         this.usersTagged = usersTagged;
     }
-
+    @Id
+    @GeneratedValue
     public long getId() {
         return id;
     }

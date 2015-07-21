@@ -1,20 +1,19 @@
 package home.map.events.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by greg on 14.07.15.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "UserDetail")
+@AttributeOverride(name = "id", column = @Column(name = "user_id",
+        nullable = false, columnDefinition = "BIGINT UNSIGNED"))
 @NamedQuery(name = "UserDetail.getUser", query = "FROM UserDetail WHERE login=:login AND password=:password")
-public class UserDetail extends BaseEntity {
-    @Column
+public class UserDetail extends BaseEntityAudit {
+    @Column(name = "login")
     private String login;
-    @Column
+    @Column(name = "password")
     private String password;
     @Column
     private String city;
@@ -28,6 +27,9 @@ public class UserDetail extends BaseEntity {
         this.login = login;
         this.password = password;
         this.city = city;
+    }
+
+    public UserDetail() {
     }
 
     public String getLogin() {
@@ -68,5 +70,16 @@ public class UserDetail extends BaseEntity {
 
     public void setQuantityOfRoutesPosted(long quantityOfRoutesPosted) {
         this.quantityOfRoutesPosted = quantityOfRoutesPosted;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+" UserDetail{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", city='" + city + '\'' +
+                ", quantityOfEventsPosted=" + quantityOfEventsPosted +
+                ", quantityOfRoutesPosted=" + quantityOfRoutesPosted +
+                '}';
     }
 }

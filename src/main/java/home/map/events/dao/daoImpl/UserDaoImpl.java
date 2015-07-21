@@ -10,7 +10,9 @@ import home.map.events.entity.UserDetail;
 public class UserDaoImpl extends DAOUtils implements UserDAO {
 
     public UserDetail getUser(String login, String password) {
-        return (UserDetail) getEm().createNamedQuery("UserDetail.getUser", UserDetail.class);
+        return (UserDetail) getEm().createQuery("SELECT u FROM UserDetail u WHERE u.login = :login and u.password = :password")
+                .setParameter("login", login)
+                .setParameter("password", password);
     }
 
     public void addUser(UserDetail user) {
@@ -22,7 +24,7 @@ public class UserDaoImpl extends DAOUtils implements UserDAO {
     }
 
     public void removeUser(UserDetail user) {
-
+       delete(user);
     }
 
     public UserDetail getUserById(long id) {

@@ -22,7 +22,7 @@ public class EntityManagerHelper {
 
 
     private static  void initialize() {
-        entityManager = Persistence.createEntityManagerFactory("DB").createEntityManager();
+        entityManager = Persistence.createEntityManagerFactory("MAP").createEntityManager();
     }
 
     public static void close() {

@@ -11,7 +11,7 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Route extends BaseEntity {
+public class Route extends BaseEntityAudit {
     @ElementCollection
     private Collection<Point> routePoints = new ArrayList<Point>();
     @OneToMany
@@ -19,6 +19,8 @@ public class Route extends BaseEntity {
     @OneToMany
     private Collection<Comment> comments = new ArrayList<Comment>();
 
+    public Route() {
+    }
 
     public Route(UserDetail createdBy) {
         super();

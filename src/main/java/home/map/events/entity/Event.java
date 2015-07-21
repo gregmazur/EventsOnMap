@@ -10,7 +10,7 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
-public class Event extends BaseEntity {
+public class Event extends BaseEntityAudit {
     @Embedded
     private Point point;
 
@@ -21,6 +21,9 @@ public class Event extends BaseEntity {
         super();
         this.point = point;
         setCreatedBy(createdBy);
+    }
+
+    public Event() {
     }
 
     public Point getPoint() {

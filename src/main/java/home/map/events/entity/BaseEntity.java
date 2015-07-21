@@ -3,99 +3,66 @@ package home.map.events.entity;
 /**
  * Created by greg on 13.07.15.
  */
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public  class BaseEntity {
+import javax.persistence.*;
+import java.io.Serializable;
 
-    private long id;
+@MappedSuperclass
+public abstract class BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", nullable = false, columnDefinition = "BIGINT UNSIGNED")
+    protected Long id;
+
+    @Column(name = "version")
+    @Version
+    private Long version;
+
+    @Column(name = "name")
     private String name;
 
-    private String description;
-
-    private Date createdAt;
-
-    private Date modifiedAt;
-    @ManyToOne
-    private UserDetail createdBy;
-    @OneToMany
-    private Collection<UserDetail> usersTagged = new HashSet<UserDetail>();
-
-    public BaseEntity() {
-        createdAt = new Date();
-    }
-
-    public UserDetail getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(UserDetail createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Collection<UserDetail> getUsersTagged() {
-        return usersTagged;
-    }
-
-    @Column
-    @Temporal(TemporalType.DATE)
-    public void setModifiedAt(Date modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public void setUsersTagged(Collection<UserDetail> usersTagged) {
-        this.usersTagged = usersTagged;
-    }
-    @Id
-    @GeneratedValue
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Long getVersion() {
+        return version;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.getId() != null ? this.getId().hashCode() : 0);
+
+        return hash;
     }
 
-    public String getDescription() {
-        return description;
+    @Override
+    public boolean equals(Object object) {
+        if (this == object)
+            return true;
+        if (object == null)
+            return false;
+        if (getClass() != object.getClass())
+            return false;
+
+        BaseEntity other = (BaseEntity) object;
+        if (this.getId() != other.getId() && (this.getId() == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    @Override
+    public String toString() {
+        return this.getClass().getName() + " [ID=" + id + " name="+name+"]";
     }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getModifiedAt() {
-        return modifiedAt;
-    }
-
 }

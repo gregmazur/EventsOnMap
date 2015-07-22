@@ -9,18 +9,19 @@ import javax.persistence.*;
 @Table(name = "UserDetail")
 @AttributeOverride(name = "id", column = @Column(name = "user_id",
         nullable = false, columnDefinition = "BIGINT UNSIGNED"))
-@NamedQuery(name = "UserDetail.getUser", query = "FROM UserDetail WHERE login=:login AND password=:password")
 public class UserDetail extends BaseEntityAudit {
-    @Column(name = "login")
+    @Column(name = "login",unique = true)
     private String login;
     @Column(name = "password")
     private String password;
-    @Column
+    @Column(name = "city")
     private String city;
     @Column
     private long quantityOfEventsPosted;
     @Column
     private long quantityOfRoutesPosted;
+    @Column
+    private long quantityOfCommentsLeft;
 
     public UserDetail(String login, String password, String city) {
         super();
@@ -70,6 +71,14 @@ public class UserDetail extends BaseEntityAudit {
 
     public void setQuantityOfRoutesPosted(long quantityOfRoutesPosted) {
         this.quantityOfRoutesPosted = quantityOfRoutesPosted;
+    }
+
+    public long getQuantityOfCommentsLeft() {
+        return quantityOfCommentsLeft;
+    }
+
+    public void setQuantityOfCommentsLeft(long quantityOfCommentsLeft) {
+        this.quantityOfCommentsLeft = quantityOfCommentsLeft;
     }
 
     @Override

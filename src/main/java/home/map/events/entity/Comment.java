@@ -8,6 +8,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Comment extends BaseEntityAudit {
+    @Column(name = "text")
     private String text;
 
     public Comment() {
@@ -16,7 +17,7 @@ public class Comment extends BaseEntityAudit {
     public Comment(String text) {
         this.text = text;
     }
-@Column(name = "comment_text")
+
     public String getText() {
         return text;
     }

@@ -5,6 +5,8 @@ import home.map.events.entity.UserDetail;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.sql.SQLException;
+
 /**
  * Created by greg on 20.07.15.
  */
@@ -15,7 +17,7 @@ public class UserDaoImplTest {
     static UserDAO userDAO = new UserDaoImpl();
 
     @BeforeClass
-    public static void start() {
+    public static void start() throws SQLException, WritingDataException {
         user1 = new UserDetail("login","password","city");
         user2 = new UserDetail("toUpdate","password2","city2");
         user3 = new UserDetail("toRemove","password2","city2");
@@ -35,7 +37,7 @@ public class UserDaoImplTest {
 
 
     @Test
-    public void testUpdateUser() throws Exception {
+    public void testUpdateUser() throws Exception, WritingDataException {
         UserDetail userDetail = userDAO.getUserById(2);
         userDetail.setCity("Odessa");
 userDAO.updateUser(userDetail);
@@ -43,7 +45,7 @@ userDAO.updateUser(userDetail);
     }
 
     @Test
-    public void testRemoveUser() throws Exception {
+    public void testRemoveUser() throws Exception, WritingDataException {
 
         userDAO.removeUser(user3);
     }
@@ -52,5 +54,12 @@ userDAO.updateUser(userDetail);
     public void testGetUserById() throws Exception {
 
         System.out.println(userDAO.getUserById(1));
+    }
+    @Test
+    public void testAddNonUniqueLogin() throws Exception, WritingDataException {
+        UserDetail user = new UserDetail("login","password","city");
+
+        userDAO.addUser(user);
+
     }
 }

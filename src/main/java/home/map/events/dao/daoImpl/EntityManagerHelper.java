@@ -19,8 +19,6 @@ public class EntityManagerHelper {
     private EntityManagerHelper() {
     }
 
-
-
     private static  void initialize() {
         entityManager = Persistence.createEntityManagerFactory("MAP").createEntityManager();
     }

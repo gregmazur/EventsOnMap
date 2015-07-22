@@ -10,7 +10,7 @@ import java.util.Collection;
  */
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "route_id",
-        nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+        nullable = false, columnDefinition = "bigserial"))
 public class Route extends BaseEntityAudit {
 
     @ElementCollection
@@ -23,6 +23,9 @@ public class Route extends BaseEntityAudit {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "\"route_comments\"")
     private Collection<Comment> comments = new ArrayList<Comment>();
+    @ManyToMany
+    @JoinTable(name = "\"users_tagged\"")
+    private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
     public Route() {
     }
@@ -41,6 +44,13 @@ public class Route extends BaseEntityAudit {
             routePoints.add(point);
         }
     }
+    public synchronized void addComment(Comment comment){
+        comments.add(comment);
+    }
+
+    public synchronized void removeComment(Comment comment){
+        comments.remove(comment);
+    }
 
     public Collection<Point> getRoutePoints() {
         return routePoints;
@@ -56,5 +66,21 @@ public class Route extends BaseEntityAudit {
 
     public void setRouteEvents(Collection<Event> routeEvents) {
         this.routeEvents = routeEvents;
+    }
+
+    public Collection<UserDetail> getUsersTagged() {
+        return usersTagged;
+    }
+
+    public void setUsersTagged(Collection<UserDetail> usersTagged) {
+        this.usersTagged = usersTagged;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 }

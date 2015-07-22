@@ -8,7 +8,6 @@
     <persistence-unit name="MAP" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>home.map.events.entity.UserDetail</class>
-        <class>home.map.events.entity.UserDetail</class>
         <class>home.map.events.entity.Route</class>
         <class>home.map.events.entity.Point</class>
         <class>home.map.events.entity.Event</class>
@@ -23,7 +22,7 @@
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="canada"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.archive.autodetection" value="class"/>
 
         </properties>

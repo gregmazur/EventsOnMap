@@ -9,15 +9,15 @@ public class DAOUtils<T> {
     private EntityManager em = EntityManagerHelper.getInstance();
 
     public void add(T t) throws WritingDataException {
-
+try{
             em.getTransaction().begin();
             em.persist(t);
             em.getTransaction().commit();
-//        } catch (Exception e) {
-//
-//            em.getTransaction().rollback();
-//            throw new WritingDataException();
-//        }
+        } catch (Exception e) {
+
+            em.getTransaction().rollback();
+            throw new WritingDataException();
+        }
 
     }
 

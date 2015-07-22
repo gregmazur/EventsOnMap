@@ -20,11 +20,13 @@ public interface RouteDAO {
 
     Collection<Route> getAllRoutes();
 
-    Collection<Route> getRoutesWithTaggedUser(UserDetail user);
+    Collection<Route> getRoutesCreatedByUser(UserDetail user);
 
     Collection<Route> getRoutesNearPoint(Point point);
 
-    Collection<Route> getRoouteContainsName(String name);
+    Collection<Route> getRouteContainsName(String name);
 
-    Collection<Event> getEventsOfRoute(Route route);
+    Collection<Event> getAllEventsForRoute(Route route);
+
+
 }

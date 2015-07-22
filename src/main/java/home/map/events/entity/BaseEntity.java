@@ -15,7 +15,7 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false, columnDefinition = "BIGINT UNSIGNED")
+    @Column(name = "id", nullable = false, columnDefinition = "bigserial")
     protected Long id;
 
     @Column(name = "version")

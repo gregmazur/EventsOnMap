@@ -4,7 +4,6 @@ import home.map.events.entity.Event;
 import home.map.events.entity.Route;
 import home.map.events.entity.UserDetail;
 import home.map.events.service.UserService;
-import home.map.events.service.Validation.LoginValidation;
 
 import java.util.Collection;
 
@@ -14,27 +13,40 @@ import java.util.Collection;
 public class UserServiceImpl implements UserService {
 
 
-    public LoginValidation getLoginValidation() {
+
+    public Collection<Event> getEvents() {
         return null;
     }
 
-    public Collection<Event> showEvents() {
+    public Collection<Route> getRoutes() {
         return null;
     }
 
-    public Collection<Route> showRoutes() {
+    public Collection<Event> getEventsCreatedByUser(UserDetail user) {
         return null;
     }
 
-    public Collection<Event> showEventsForUser(UserDetail user) {
+    public Collection<Route> getRoutesCreatedByUser(UserDetail user) {
         return null;
     }
 
-    public Collection<Route> showRoutesForUser(UserDetail user) {
-        return null;
+    public boolean addEventToRoute(Event event, Route route) {
+        return false;
+    }
+
+    public boolean removeEvent() {
+        return false;
     }
 
     public boolean addRoute(Route route) {
+        return false;
+    }
+
+    public boolean removeRoute(Route route) {
+        return false;
+    }
+
+    public boolean addEventToRoute(Route route, Event event) {
         return false;
     }
 

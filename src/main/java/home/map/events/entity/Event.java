@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "event_id",
-        nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+        nullable = false, columnDefinition = "bigserial"))
 public class Event extends BaseEntityAudit {
     @Embedded
     private Point point;
@@ -33,5 +33,17 @@ public class Event extends BaseEntityAudit {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public synchronized void addComment(Comment comment){
+        comments.add(comment);
+    }
+
+    public synchronized void removeComment(Comment comment){
+        comments.remove(comment);
     }
 }

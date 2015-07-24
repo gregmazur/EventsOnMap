@@ -1,8 +1,6 @@
 package home.map.events.service;
 
-import home.map.events.entity.Event;
-import home.map.events.entity.Route;
-import home.map.events.entity.UserDetail;
+import home.map.events.entity.*;
 
 import java.util.Collection;
 
@@ -19,18 +17,34 @@ public interface UserService {
 
     Collection<Route> getRoutesCreatedByUser(UserDetail user);
 
+    Collection<Event> getEventsNearEvent(Event event);
+
+    Collection<Event> getEventsNearPoint(Point point);
+
+    Collection<Route> getRouteNearPoint(Point point);
+
+    Collection<UserDetail> getUsersTaggedInEvent(Event event);
+
+    Collection<UserDetail> getUsersTaggedInRoute(Route route);
+
     boolean addEventToRoute(Event event,Route route);
+
+    Comment addCommentToEvent(Event event, String text);
 
     boolean removeEvent();
 
+    boolean editEvent(Event event, UserDetail user);
+
     boolean addRoute(Route route);
 
-    boolean removeRoute(Route route);
+    boolean editRoute(Route route, UserDetail user);
 
-    boolean addEventToRoute(Route route, Event event);
+    boolean removeRoute(Route route, UserDetail user);
 
-    boolean addCommentToRoute(Route route, String text);
+    Comment addCommentToRoute(Route route, String text);
 
-    boolean addCommentToEvent(Event event, String text);
+    boolean editComment(Comment comment, UserDetail user);
+
+    boolean editUser(UserDetail userDetail);
 
 }

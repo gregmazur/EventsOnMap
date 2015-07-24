@@ -17,6 +17,9 @@ public class Event extends BaseEntityAudit {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "event_comments")
     private Collection<Comment> comments = new ArrayList<Comment>();
+    @OneToMany
+    @JoinTable(name = "\"users_tagged_at_event\"")
+    private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
     public Event(UserDetail createdBy, Point point) {
         super();
@@ -45,5 +48,13 @@ public class Event extends BaseEntityAudit {
 
     public synchronized void removeComment(Comment comment){
         comments.remove(comment);
+    }
+
+    public Collection<UserDetail> getUsersTagged() {
+        return usersTagged;
+    }
+
+    public void setUsersTagged(Collection<UserDetail> usersTagged) {
+        this.usersTagged = usersTagged;
     }
 }

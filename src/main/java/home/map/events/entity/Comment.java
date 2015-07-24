@@ -14,8 +14,9 @@ public class Comment extends BaseEntityAudit {
     public Comment() {
     }
 
-    public Comment(String text) {
+    public Comment(String text, UserDetail user) {
         this.text = text;
+        setCreatedBy(user);
     }
 
     public String getText() {

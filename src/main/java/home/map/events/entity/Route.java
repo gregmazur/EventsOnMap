@@ -23,8 +23,8 @@ public class Route extends BaseEntityAudit {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "\"route_comments\"")
     private Collection<Comment> comments = new ArrayList<Comment>();
-    @ManyToMany
-    @JoinTable(name = "\"users_tagged\"")
+    @OneToMany
+    @JoinTable(name = "\"users_tagged_at_route\"")
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
     public Route() {

@@ -8,10 +8,6 @@
     <persistence-unit name="MAP" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
-            <property name="driverClassName" value="org.postgresql.Driver"></property>
-            <property name="url" value="jdbc:postgresql://localhost:5433/journey"></property>
-            <property name="username" value="postgres"></property>
-            <property name="password" value="canada"></property>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />

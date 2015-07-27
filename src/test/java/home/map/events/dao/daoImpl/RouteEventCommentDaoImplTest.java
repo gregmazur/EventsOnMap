@@ -7,10 +7,15 @@ import home.map.events.dao.UserDAO;
 import home.map.events.entity.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by greg on 21.07.15.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/ApplicationContext.xml")
 public class RouteEventCommentDaoImplTest {
     static UserDetail user = new UserDetail("login", "password", "city");
     static UserDetail userTagged = new UserDetail("login2", "password", "city");

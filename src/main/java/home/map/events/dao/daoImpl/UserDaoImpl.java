@@ -2,38 +2,43 @@ package home.map.events.dao.daoImpl;
 
 import home.map.events.dao.UserDAO;
 import home.map.events.entity.UserDetail;
-import org.springframework.orm.jpa.JpaTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 
 /**
  * Created by greg on 16.07.15.
  */
+@Repository
 @Transactional
 public class UserDaoImpl  implements UserDAO {
-    JpaTemplate jpaTemplate;
+    @PersistenceContext
+    private EntityManager em;
 
     public UserDetail getUser(String login, String password) {
-        return jpaTemplate.find(UserDetail.class,"SELECT u FROM UserDetail u WHERE u.login = :login and u.password = :password");
+        return em.find(UserDetail.class,"SELECT u FROM UserDetail u WHERE u.login = :login and u.password = :password");
 //        return (UserDetail) getEm().createQuery("SELECT u FROM UserDetail u WHERE u.login = :login and u.password = :password")
 //                .setParameter("login", login)
 //                .setParameter("password", password).getSingleResult();
     }
 
     public void addUser(UserDetail user)  {
-        jpaTemplate.persist(user);
+        em.persist(user);
     }
 
     public void updateUser(UserDetail user) {
-        jpaTemplate.merge(user);
+        em.merge(user);
     }
 
     public void removeUser(UserDetail user)  {
-       jpaTemplate.remove(user);
+       em.remove(user);
     }
 
     public UserDetail getUserById(long id) {
-        return jpaTemplate.find(UserDetail.class,id);
+        return em.find(UserDetail.class,id);
     }
 
 }

@@ -7,16 +7,15 @@
 
     <persistence-unit name="MAP" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>home.map.events.entity.UserDetail</class>
-        <class>home.map.events.entity.Route</class>
-        <class>home.map.events.entity.Point</class>
-        <class>home.map.events.entity.Event</class>
-        <class>home.map.events.entity.Comment</class>
-        <class>home.map.events.entity.BaseEntityAudit</class>
-        <class>home.map.events.entity.BaseEntity</class>
-
-
-
+        <properties>
+            <property name="driverClassName" value="org.postgresql.Driver"></property>
+            <property name="url" value="jdbc:postgresql://localhost:5433/journey"></property>
+            <property name="username" value="postgres"></property>
+            <property name="password" value="canada"></property>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
 
     </persistence-unit>
 </persistence>

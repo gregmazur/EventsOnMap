@@ -10,12 +10,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by greg on 20.07.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/ApplicationContext.xml" })
+@Transactional
+@TransactionConfiguration(defaultRollback = true)
 public class UserDaoImplTest implements ApplicationContextAware {
     @Autowired
     private UserDAO userDAO;
@@ -27,8 +31,9 @@ public class UserDaoImplTest implements ApplicationContextAware {
     @Test
     public void testGetUser() throws Exception {
         UserDetail user = new UserDetail("login","password","city");
+        userDAO.addUser(user);
         UserDetail userDetail = userDAO.getUser("login", "password");
-        System.out.println(userDetail);
+        System.out.println("Test user login/password" + userDetail);
 
     }
 

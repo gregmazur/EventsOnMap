@@ -9,9 +9,9 @@ import java.util.Collection;
  */
 public interface UserService {
 
-    Collection<Event> getEvents();
+    Collection<Event> getAllEvents();
 
-    Collection<Route> getRoutes();
+    Collection<Route> getAllRoutes();
 
     Collection<Event> getEventsCreatedByUser(UserDetail user);
 
@@ -44,7 +44,15 @@ public interface UserService {
     Comment addCommentToRoute(Route route, String text);
 
     boolean editComment(Comment comment, UserDetail user);
+    /*
+    User
+     */
+    UserDetail editUser(UserDetail userDetail);
 
-    boolean editUser(UserDetail userDetail);
+    UserDetail createUser(UserDetail userDetail);
+
+    UserDetail login (String login, String password);
+
+    void deleteUser(UserDetail userDetail);
 
 }

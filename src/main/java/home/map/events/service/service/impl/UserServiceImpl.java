@@ -1,77 +1,63 @@
 package home.map.events.service.service.impl;
 
-import home.map.events.dao.CommentDAO;
-import home.map.events.dao.EventDAO;
-import home.map.events.dao.RouteDAO;
 import home.map.events.dao.UserDAO;
-import home.map.events.dao.daoImpl.*;
 import home.map.events.entity.*;
 import home.map.events.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Created by greg on 16.07.15.
  */
+@Service
 public class UserServiceImpl implements UserService {
-    private UserDAO userDAO = new UserDaoImpl();
-    private RouteDAO routeDAO = new RouteDaoImpl();
-    private EventDAO eventDAO = new EventDaoImpl();
-    private CommentDAO commentDAO = new CommentDaoImpl();
+    @Autowired
+    private UserDAO userDAO;
 
 
-    public Collection<Event> getEvents() {
-        return eventDAO.getAllEvents();
+    public Collection<Event> getAllEvents() {
+        return null;
     }
 
-    public Collection<Route> getRoutes() {
-        return routeDAO.getAllRoutes();
+    public Collection<Route> getAllRoutes() {
+        return null;
     }
 
     public Collection<Event> getEventsCreatedByUser(UserDetail user) {
-        return eventDAO.getEventsCreatedByUser(user);
+        return null;
     }
 
     public Collection<Route> getRoutesCreatedByUser(UserDetail user) {
-        return routeDAO.getRoutesCreatedByUser(user);
+        return null;
     }
 
     public Collection<Event> getEventsNearEvent(Event event) {
-        //TODO
         return null;
     }
 
     public Collection<Event> getEventsNearPoint(Point point) {
-        //TODO
         return null;
     }
 
     public Collection<Route> getRouteNearPoint(Point point) {
-        //TODO
         return null;
     }
 
     public Collection<UserDetail> getUsersTaggedInEvent(Event event) {
-        return event.getUsersTagged();
+        return null;
     }
 
     public Collection<UserDetail> getUsersTaggedInRoute(Route route) {
-        return route.getUsersTagged();
+        return null;
     }
-//in condition that the route already has been saved
+
     public boolean addEventToRoute(Event event, Route route) {
-        try {
-            route.addEvent(event);
-            routeDAO.updateRoute(route);
-            return true;
-        } catch (WritingDataException e) {
-            e.printStackTrace();
-        }
         return false;
     }
 
     public Comment addCommentToEvent(Event event, String text) {
-
         return null;
     }
 
@@ -103,7 +89,19 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    public boolean editUser(UserDetail userDetail) {
-        return false;
+    public UserDetail editUser(UserDetail userDetail) {
+        return userDAO.saveAndFlush(userDetail);
+    }
+
+    public UserDetail createUser(UserDetail userDetail) {
+        return userDAO.saveAndFlush(userDetail);
+    }
+
+    public UserDetail login(String login, String password) {
+        return userDAO.getUser(login, password);
+    }
+
+    public void deleteUser(UserDetail userDetail) {
+        userDAO.delete(userDetail);
     }
 }

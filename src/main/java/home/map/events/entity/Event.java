@@ -8,6 +8,7 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
+@Table(name = "Event")
 @AttributeOverride(name = "id", column = @Column(name = "event_id",
         nullable = false, columnDefinition = "bigserial"))
 public class Event extends BaseEntityAudit {

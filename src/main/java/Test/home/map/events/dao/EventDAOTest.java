@@ -5,6 +5,7 @@ import home.map.events.dao.UserDAO;
 import home.map.events.entity.Event;
 import home.map.events.entity.Point;
 import home.map.events.entity.UserDetail;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,26 @@ public class EventDAOTest {
         System.out.println(eventDAO.findAll());
         Collection<Event> fromDB = eventDAO.getEventsCreatedByUser(userDetail);
         System.out.println("FROM DB" + fromDB);
-
-
     }
+    @Test
+    public void updateEvent() throws Exception {
+        Event event = new Event();
+        eventDAO.saveAndFlush(event);
+        event.setName("name");
+        eventDAO.saveAndFlush(event);
+        Event fromDB = eventDAO.findOne(event.getId());
+        Assert.assertEquals(event,fromDB);
+        System.out.println("UPDATED" + fromDB);
+    }
+    @Test
+    public void removeEvent() throws Exception {
+        Event event = new Event();
+        event.setName("toRemove");
+        eventDAO.saveAndFlush(event);
+        eventDAO.delete(event);
+        Event fromDB = eventDAO.findOne(event.getId());
+        Assert.assertNull(fromDB);
+        System.out.println("UPDATED" + fromDB);
+    }
+
 }

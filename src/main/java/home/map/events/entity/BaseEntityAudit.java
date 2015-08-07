@@ -14,7 +14,7 @@ public abstract class BaseEntityAudit extends BaseEntity {
     private Date createdAt;
 
 
-    @Column(name = "created_by", length = 20)
+    @Column(name = "createdBy", length = 20)
     private UserDetail createdBy;
 
     @Column(name = "updated_at")

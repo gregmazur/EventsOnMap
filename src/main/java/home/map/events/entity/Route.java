@@ -9,6 +9,7 @@ import java.util.Collection;
  * Created by greg on 14.07.15.
  */
 @Entity
+@Table(name = "Route")
 @AttributeOverride(name = "id", column = @Column(name = "route_id",
         nullable = false, columnDefinition = "bigserial"))
 public class Route extends BaseEntityAudit {

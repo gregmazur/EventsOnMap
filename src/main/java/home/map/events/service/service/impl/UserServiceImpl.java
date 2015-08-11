@@ -1,36 +1,47 @@
 package home.map.events.service.service.impl;
 
+import home.map.events.dao.CommentDAO;
+import home.map.events.dao.EventDAO;
+import home.map.events.dao.RouteDAO;
 import home.map.events.dao.UserDAO;
 import home.map.events.entity.*;
 import home.map.events.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
 /**
  * Created by greg on 16.07.15.
  */
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private EventDAO eventDAO;
+    @Autowired
+    private RouteDAO routeDAO;
+    @Autowired
+    private CommentDAO commentDAO;
 
 
     public Collection<Event> getAllEvents() {
-        return null;
+        return eventDAO.findAll();
     }
 
     public Collection<Route> getAllRoutes() {
-        return null;
+        return routeDAO.findAll();
     }
 
     public Collection<Event> getEventsCreatedByUser(UserDetail user) {
-        return null;
+        return eventDAO.getEventsCreatedByUser(user);
     }
 
     public Collection<Route> getRoutesCreatedByUser(UserDetail user) {
-        return null;
+        return routeDAO.getRoutesCreatedByUser(user);
     }
 
     public Collection<Event> getEventsNearEvent(Event event) {

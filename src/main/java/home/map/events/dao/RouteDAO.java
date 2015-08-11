@@ -1,6 +1,5 @@
 package home.map.events.dao;
 
-import home.map.events.entity.Point;
 import home.map.events.entity.Route;
 import home.map.events.entity.UserDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +15,7 @@ public interface RouteDAO extends JpaRepository<Route,Long> {
     @Query("SELECT r FROM  Route r WHERE r.createdBy = :userdetail")
     Collection<Route> getRoutesCreatedByUser(@Param("userdetail")UserDetail user);
 
-    Collection<Route> getRoutesNearPoint(Point point);
+
 
     @Query("SELECT r FROM Route r WHERE r.name LIKE name")
     Collection<Route> getRouteContainsName(@Param("name")String name);

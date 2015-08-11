@@ -1,5 +1,7 @@
 package home.map.events.entity;
 
+import home.map.events.entity.enums.UserRole;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +24,9 @@ public class UserDetail extends BaseEntityAudit {
     private long quantityOfRoutesPosted;
     @Column
     private long quantityOfCommentsLeft;
+    @Column(name = "role")
+    @Enumerated
+    UserRole role;
 
     public UserDetail(String login, String password, String city) {
         super();
@@ -31,6 +36,14 @@ public class UserDetail extends BaseEntityAudit {
     }
 
     public UserDetail() {
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public String getLogin() {

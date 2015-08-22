@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.lang.Math;
 /**
  * Created by greg on 29.07.15.
  */
@@ -64,7 +64,7 @@ public class UserDAOTest {
         user.setName("UPDATED");
         userDAO.saveAndFlush(user);
         UserDetail fromDB = userDAO.findOne(user.getId());
-        Assert.assertNotNull(fromDB);
+        assertNotNull(fromDB);
         Assert.assertEquals(fromDB, user);
     }
     @Test

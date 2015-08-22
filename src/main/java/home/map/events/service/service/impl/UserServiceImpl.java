@@ -9,6 +9,7 @@ import home.map.events.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;
 
@@ -107,10 +108,11 @@ public class UserServiceImpl implements UserService {
     public UserDetail createUser(UserDetail userDetail) {
         return userDAO.saveAndFlush(userDetail);
     }
-
+@RequestMapping
     public UserDetail login(String login, String password) {
         return userDAO.getUser(login, password);
     }
+
 
     public void deleteUser(UserDetail userDetail) {
         userDAO.delete(userDetail);

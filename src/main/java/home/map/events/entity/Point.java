@@ -4,7 +4,9 @@ package home.map.events.entity;
  * Created by greg on 14.07.15.
  */
 
-import com.sun.istack.internal.NotNull;
+
+
+;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -12,10 +14,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Point {
     @Column
-    @NotNull
     private double longitude;
     @Column
-    @NotNull
     private double latitude;
 
     public Point(){}

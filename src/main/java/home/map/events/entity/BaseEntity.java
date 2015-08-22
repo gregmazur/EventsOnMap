@@ -11,21 +11,22 @@ import java.io.Serializable;
 public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    protected Long id;
-    private Long version;
-    private String name;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id", nullable = false, columnDefinition = "bigserial")
+    protected Long id;
+    @Column(name = "version")
+    @Version
+    private Long version;
+    @Column(name = "name")
+    private String name;
+
+
     public Long getId() {
         return id;
     }
 
-    @Column(name = "version")
-    @Version
+
     public Long getVersion() {
         return version;
     }

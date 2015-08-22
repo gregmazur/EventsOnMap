@@ -17,7 +17,7 @@ public interface RouteDAO extends JpaRepository<Route,Long> {
 
 
 
-    @Query("SELECT r FROM Route r WHERE r.name LIKE name")
-    Collection<Route> getRouteContainsName(@Param("name")String name);
+    @Query("SELECT r FROM Route r WHERE r.name LIKE CONCAT('%',:entered_name,'%')")
+    Collection<Route> getRouteContainsName(@Param("entered_name")String name);
 
 }

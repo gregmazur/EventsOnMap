@@ -8,25 +8,22 @@ import java.util.Collection;
 /**
  * Created by greg on 14.07.15.
  */
-@Entity
-@Table(name = "Route")
-@AttributeOverride(name = "id", column = @Column(name = "route_id",
-        nullable = false, columnDefinition = "bigserial"))
-public class Route extends BaseEntityAudit {
+    @Entity @Table (name = "Route")
+    @AttributeOverride (name = "id", column = @Column (name = "route_id",
+    nullable = false, columnDefinition = "bigserial"))
+    public class Route extends BaseEntityAudit {
 
-    @ElementCollection
-    private Collection<Point> routePoints = new ArrayList<Point>();
+    @ElementCollection private Collection<Point> routePoints = new ArrayList<Point>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "\"route_events\"")
+    @OneToMany (cascade = CascadeType.ALL) @JoinTable (name = "\"route_events\"")
     private Collection<Event> routeEvents = new ArrayList<Event>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "\"route_comments\"")
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
+    @JoinTable (name = "route_comments", joinColumns = {
+        @JoinColumn (name = "route_id")}, inverseJoinColumns = {@JoinColumn (name = "comment_id")})
     private Collection<Comment> comments = new ArrayList<Comment>();
-    @OneToMany
-    @JoinTable(name = "\"users_tagged_at_route\"")
-    private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
+    @OneToMany @JoinTable (name = "\"users_tagged_at_route\"") private Collection<UserDetail>
+        usersTagged = new ArrayList<UserDetail>();
 
     public Route() {
     }
@@ -35,21 +32,24 @@ public class Route extends BaseEntityAudit {
         super();
         setCreatedBy(createdBy);
     }
-    public synchronized void  addEvent(Event event){
-        if(!routeEvents.contains(event)){
+
+    public synchronized void addEvent(Event event) {
+        if (!routeEvents.contains(event)) {
             routeEvents.add(event);
         }
     }
-    public synchronized void  addPoint(Point point){
-        if(!routePoints.contains(point)){
+
+    public synchronized void addPoint(Point point) {
+        if (!routePoints.contains(point)) {
             routePoints.add(point);
         }
     }
-    public synchronized void addComment(Comment comment){
+
+    public synchronized void addComment(Comment comment) {
         comments.add(comment);
     }
 
-    public synchronized void removeComment(Comment comment){
+    public synchronized void removeComment(Comment comment) {
         comments.remove(comment);
     }
 

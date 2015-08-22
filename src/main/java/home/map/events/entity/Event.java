@@ -15,8 +15,9 @@ public class Event extends BaseEntityAudit {
     @Embedded
     private Point point;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "event_comments")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
+    @JoinTable(name = "event_comments", joinColumns = {
+        @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "comment_id")})
     private Collection<Comment> comments = new ArrayList<Comment>();
     @OneToMany
     @JoinTable(name = "\"users_tagged_at_event\"")

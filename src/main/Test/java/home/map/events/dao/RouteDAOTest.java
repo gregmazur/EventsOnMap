@@ -1,4 +1,4 @@
-package Test.home.map.events.dao;
+package home.map.events.dao;
 
 import org.junit.Test;
 

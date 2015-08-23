@@ -1,11 +1,10 @@
-package Test.home.map.events.dao;
+package home.map.events.dao;
 
-import home.map.events.dao.EventDAO;
-import home.map.events.dao.UserDAO;
 import home.map.events.entity.Event;
 import home.map.events.entity.Point;
 import home.map.events.entity.UserDetail;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class EventDAOTest {
         event.setName("name");
         eventDAO.saveAndFlush(event);
         Event fromDB = eventDAO.findOne(event.getId());
-        Assert.assertEquals(event,fromDB);
+        assertEquals(event,fromDB);
         System.out.println("UPDATED" + fromDB);
     }
     @Test
@@ -64,7 +63,7 @@ public class EventDAOTest {
         eventDAO.saveAndFlush(event);
         eventDAO.delete(event);
         Event fromDB = eventDAO.findOne(event.getId());
-        Assert.assertNull(fromDB);
+        assertNull(fromDB);
         System.out.println("UPDATED" + fromDB);
     }
 

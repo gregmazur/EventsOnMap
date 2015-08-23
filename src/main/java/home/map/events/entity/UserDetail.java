@@ -26,7 +26,7 @@ public class UserDetail extends BaseEntityAudit {
     private long quantityOfCommentsLeft;
     @Column(name = "role")
     @Enumerated
-    UserRole role;
+    private UserRole role;
 
     public UserDetail(String login, String password, String city) {
         super();

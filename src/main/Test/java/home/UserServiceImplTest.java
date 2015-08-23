@@ -1,4 +1,4 @@
-package Test;
+package home;
 
 import org.junit.Test;
 

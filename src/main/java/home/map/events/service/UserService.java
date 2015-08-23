@@ -9,17 +9,14 @@ import java.util.Collection;
  */
 public interface UserService {
 
-    Collection<Event> getAllEvents();
 
     Collection<Route> getAllRoutes();
 
-    Collection<Event> getEventsCreatedByUser(UserDetail user);
+
 
     Collection<Route> getRoutesCreatedByUser(UserDetail user);
 
-    Collection<Event> getEventsNearEvent(Event event);
 
-    Collection<Event> getEventsNearPoint(Point point);
 
     Collection<Route> getRouteNearPoint(Point point);
 
@@ -29,11 +26,9 @@ public interface UserService {
 
     boolean addEventToRoute(Event event,Route route);
 
-    Comment addCommentToEvent(Event event, String text);
 
-    boolean removeEvent();
 
-    boolean editEvent(Event event, UserDetail user);
+
 
     boolean addRoute(Route route);
 

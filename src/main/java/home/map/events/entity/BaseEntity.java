@@ -21,6 +21,17 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "name")
     private String name;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public Long getId() {
         return id;

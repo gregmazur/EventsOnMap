@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: greg
@@ -9,11 +10,11 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
+
     <title>Test</title>
 </head>
 
 <body>
-
+Hey HO
 </body>
 </html>

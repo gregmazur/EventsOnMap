@@ -8,10 +8,9 @@ import java.util.Collection;
 /**
  * Created by greg on 14.07.15.
  */
-    @Entity @Table (name = "Route")
-    @AttributeOverride (name = "id", column = @Column (name = "route_id",
-    nullable = false, columnDefinition = "bigserial"))
-    public class Route extends BaseEntityAudit {
+@Entity @Table (name = "Route")
+@AttributeOverride (name = "id", column = @Column (name = "route_id",
+    nullable = false, columnDefinition = "bigserial")) public class Route extends BaseEntityAudit {
 
     @ElementCollection private Collection<Point> routePoints = new ArrayList<Point>();
 
@@ -34,15 +33,11 @@ import java.util.Collection;
     }
 
     public synchronized void addEvent(Event event) {
-        if (!routeEvents.contains(event)) {
-            routeEvents.add(event);
-        }
+        routeEvents.add(event);
     }
 
     public synchronized void addPoint(Point point) {
-        if (!routePoints.contains(point)) {
-            routePoints.add(point);
-        }
+        routePoints.add(point);
     }
 
     public synchronized void addComment(Comment comment) {

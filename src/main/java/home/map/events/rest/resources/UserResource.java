@@ -9,12 +9,21 @@ import org.springframework.hateoas.ResourceSupport;
  */
 public class UserResource extends ResourceSupport {
 
+    private String name;
     private String login;
     private String city;
     private long quantityOfEventsPosted;
     private long quantityOfRoutesPosted;
     private long quantityOfCommentsLeft;
     private UserRole role;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getLogin() {
         return login;

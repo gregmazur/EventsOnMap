@@ -1,8 +1,8 @@
-package home.map.events.service;
+package home.map.events.core.service;
 
-import home.map.events.entity.Event;
-import home.map.events.entity.Route;
-import home.map.events.entity.UserDetail;
+import home.map.events.core.entity.Event;
+import home.map.events.core.entity.Route;
+import home.map.events.core.entity.UserDetail;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -13,15 +13,17 @@ import java.util.Collection;
 @Service
 public interface UserService {
 
+    UserDetail getByID(Long id);
+
     Collection<UserDetail> getUsersTaggedInEvent(Event event);
 
     Collection<UserDetail> getUsersTaggedInRoute(Route route);
 
-    UserDetail editUser(UserDetail userDetail);
+    UserDetail updateUser(Long userId, UserDetail updatedUserDetail);
 
     UserDetail createUser(UserDetail userDetail);
 
-    UserDetail login (String login, String password);
+    Route createRoute(Long userId, Route route);
 
     void deleteUser(UserDetail userDetail);
 

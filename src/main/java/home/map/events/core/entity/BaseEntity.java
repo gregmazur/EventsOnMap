@@ -1,4 +1,4 @@
-package home.map.events.entity;
+package home.map.events.core.entity;
 
 /**
  * Created by greg on 13.07.15.
@@ -10,7 +10,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "bigserial")
@@ -21,9 +21,7 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "name")
     private String name;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -69,10 +67,8 @@ public abstract class BaseEntity implements Serializable {
             return false;
 
         BaseEntity other = (BaseEntity) object;
-        if (this.getId() != other.getId() && (this.getId() == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !(this.getId() != other.getId() && (this.getId() == null || !this.id
+            .equals(other.id)));
     }
 
 

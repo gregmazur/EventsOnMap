@@ -1,4 +1,4 @@
-package home.map.events.entity;
+package home.map.events.core.entity;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;

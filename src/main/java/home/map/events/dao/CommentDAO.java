@@ -1,6 +1,6 @@
 package home.map.events.dao;
 
-import home.map.events.entity.Comment;
+import home.map.events.core.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

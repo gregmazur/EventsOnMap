@@ -34,7 +34,7 @@
                 <entry key="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             </map>
         </property>
-        <property name="packagesToScan" value="home.map.events.entity"/>
+        <property name="packagesToScan" value="home.map.events.core.entity"/>
     </bean>
     <!-- Transaction Manager -->
     <bean id="transactionManager"
@@ -45,6 +45,6 @@
     <jpa:repositories base-package="home.map.events.dao"/>
 
 
-    <context:component-scan base-package="home.map.events.service.impl"/>
+    <context:component-scan base-package="home.map.events.core.service.impl"/>
 
 </beans>

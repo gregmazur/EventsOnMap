@@ -1,6 +1,6 @@
-package home.map.events.entity;
+package home.map.events.core.entity;
 
-import home.map.events.entity.enums.UserRole;
+import home.map.events.core.entity.enums.UserRole;
 
 import javax.persistence.*;
 

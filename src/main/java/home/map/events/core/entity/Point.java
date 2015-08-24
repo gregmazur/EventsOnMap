@@ -1,12 +1,10 @@
-package home.map.events.entity;
+package home.map.events.core.entity;
 
 /**
  * Created by greg on 14.07.15.
  */
 
 
-
-;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,10 +1,8 @@
 package home.map.events.dao;
 
-import home.map.events.entity.Event;
-import home.map.events.entity.Point;
-import home.map.events.entity.UserDetail;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import home.map.events.core.entity.Event;
+import home.map.events.core.entity.Point;
+import home.map.events.core.entity.UserDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by greg on 07.08.15.

@@ -1,10 +1,7 @@
 package Test.home.map.events.dao;
 
+import home.map.events.core.entity.UserDetail;
 import home.map.events.dao.UserDAO;
-import home.map.events.entity.UserDetail;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +10,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.Assert.*;
 /**
  * Created by greg on 29.07.15.
  */

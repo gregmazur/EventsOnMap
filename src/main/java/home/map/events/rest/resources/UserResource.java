@@ -1,7 +1,10 @@
 package home.map.events.rest.resources;
 
-import home.map.events.entity.enums.UserRole;
+import home.map.events.core.entity.UserDetail;
+import home.map.events.core.entity.enums.UserRole;
 import org.springframework.hateoas.ResourceSupport;
+
+import java.util.Date;
 
 
 /**
@@ -11,11 +14,50 @@ public class UserResource extends ResourceSupport {
 
     private String name;
     private String login;
+    private String password;
     private String city;
     private long quantityOfEventsPosted;
     private long quantityOfRoutesPosted;
     private long quantityOfCommentsLeft;
     private UserRole role;
+    private Date createdAt;
+    private Date updatedAt;
+
+    public UserDetail toUserDetail() {
+        UserDetail user = new UserDetail(login, password, city);
+        user.setName(name);
+        user.setQuantityOfCommentsLeft(quantityOfCommentsLeft);
+        user.setQuantityOfEventsPosted(quantityOfEventsPosted);
+        user.setQuantityOfRoutesPosted(quantityOfRoutesPosted);
+        user.setRole(role);
+        user.setCreatedAt(createdAt);
+        user.setUpdatedAt(updatedAt);
+        return user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public String getName() {
         return name;

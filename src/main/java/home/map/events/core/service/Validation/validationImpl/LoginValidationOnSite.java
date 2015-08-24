@@ -1,7 +1,7 @@
-package home.map.events.service.Validation.validationImpl;
+package home.map.events.core.service.Validation.validationImpl;
 
-import home.map.events.entity.UserDetail;
-import home.map.events.service.Validation.LoginValidation;
+import home.map.events.core.entity.UserDetail;
+import home.map.events.core.service.Validation.LoginValidation;
 
 /**
  * Created by greg on 16.07.15.

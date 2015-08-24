@@ -1,6 +1,6 @@
 package home.map.events.rest.resources;
 
-import home.map.events.entity.*;
+import home.map.events.core.entity.*;
 import org.springframework.hateoas.ResourceSupport;
 
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.Date;
  * Created by greg on 23.08.15.
  */
 public class RouteResource extends ResourceSupport {
+
     private String name;
     private Collection<Point> routePoints = new ArrayList<Point>();
     private Collection<Event> routeEvents = new ArrayList<Event>();
@@ -19,9 +20,10 @@ public class RouteResource extends ResourceSupport {
     private UserDetail createdBy;
     private Date createdAt;
 
-    public Route toRoute(RouteResource resource) {
+    public Route toRoute() {
         Route route = new Route();
         route.setName(name);
+
         route.setRoutePoints(routePoints);
         route.setRouteEvents(routeEvents);
         route.setCreatedAt(createdAt);
@@ -66,6 +68,10 @@ public class RouteResource extends ResourceSupport {
         return usersTagged;
     }
 
+    public void setUsersTagged(Collection<UserDetail> usersTagged) {
+        this.usersTagged = usersTagged;
+    }
+
     public UserDetail getCreatedBy() {
         return createdBy;
     }
@@ -80,9 +86,5 @@ public class RouteResource extends ResourceSupport {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public void setUsersTagged(Collection<UserDetail> usersTagged) {
-        this.usersTagged = usersTagged;
     }
 }

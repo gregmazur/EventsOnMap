@@ -1,4 +1,4 @@
-package home.map.events.entity;
+package home.map.events.core.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -79,4 +79,5 @@ import java.util.Collection;
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
     }
+
 }

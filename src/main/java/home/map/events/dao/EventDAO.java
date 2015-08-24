@@ -1,7 +1,7 @@
 package home.map.events.dao;
 
-import home.map.events.entity.Event;
-import home.map.events.entity.UserDetail;
+import home.map.events.core.entity.Event;
+import home.map.events.core.entity.UserDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

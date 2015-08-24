@@ -94,14 +94,5 @@ public class UserDetail extends BaseEntityAudit {
         this.quantityOfCommentsLeft = quantityOfCommentsLeft;
     }
 
-    @Override
-    public String toString() {
-        return super.toString()+" UserDetail{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
-                ", quantityOfEventsPosted=" + quantityOfEventsPosted +
-                ", quantityOfRoutesPosted=" + quantityOfRoutesPosted +
-                '}';
-    }
+
 }

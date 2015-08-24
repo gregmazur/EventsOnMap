@@ -1,5 +1,6 @@
 package home.map.events.core.service;
 
+import home.map.events.core.entity.Route;
 import home.map.events.core.entity.Test;
 
 /**
@@ -7,4 +8,6 @@ import home.map.events.core.entity.Test;
  */
 public interface TestService {
     Test find(Long id);
+
+    Route createRoute(Long id, Route route);
 }

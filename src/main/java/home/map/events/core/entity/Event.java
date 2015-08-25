@@ -52,6 +52,10 @@ public class Event extends BaseEntityAudit {
         comments.remove(comment);
     }
 
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
+    }
+
     public Collection<UserDetail> getUsersTagged() {
         return usersTagged;
     }

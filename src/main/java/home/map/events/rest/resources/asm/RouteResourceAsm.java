@@ -26,6 +26,8 @@ public class RouteResourceAsm extends ResourceAssemblerSupport<Route, RouteResou
         resource.setComments(route.getComments());
         resource.setCreatedAt(route.getCreatedAt());
         resource.setCreatedBy(route.getCreatedBy());
+        resource.setUpdatedAt(route.getUpdatedAt());
+        resource.setUpdatedBy(route.getUpdatedBy());
         Link link = linkTo(RouteController.class).slash(route.getId()).withSelfRel();
         resource.add(link);
         return resource;

@@ -24,7 +24,10 @@ public class UserResource extends ResourceSupport {
     private Date updatedAt;
 
     public UserDetail toUserDetail() {
-        UserDetail user = new UserDetail(login, password, city);
+        UserDetail user = new UserDetail();
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setCity(city);
         user.setName(name);
         user.setQuantityOfCommentsLeft(quantityOfCommentsLeft);
         user.setQuantityOfEventsPosted(quantityOfEventsPosted);

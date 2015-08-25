@@ -18,7 +18,10 @@ public class RouteResource extends ResourceSupport {
     private Collection<Comment> comments = new ArrayList<Comment>();
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
     private UserDetail createdBy;
+    private UserDetail updatedBy;
     private Date createdAt;
+    private Date updatedAt;
+
 
     public Route toRoute() {
         Route route = new Route();
@@ -30,6 +33,22 @@ public class RouteResource extends ResourceSupport {
         route.setUsersTagged(usersTagged);
         route.setCreatedBy(createdBy);
         return route;
+    }
+
+    public UserDetail getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(UserDetail updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getName() {

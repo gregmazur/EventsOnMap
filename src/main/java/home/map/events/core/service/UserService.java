@@ -23,8 +23,6 @@ public interface UserService {
 
     UserDetail createUser(UserDetail userDetail);
 
-    Route createRoute(Long userId, Route route);
-
     void deleteUser(UserDetail userDetail);
 
 }

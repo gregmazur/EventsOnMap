@@ -14,6 +14,8 @@ import java.util.Collection;
 @Service public interface RouteService {
     Route getById(Long id);
 
+    Route createRoute(Route route);
+
     Route update(long id, Route newRoute);
 
     Collection<Route> getAllRoutes();
@@ -23,8 +25,6 @@ import java.util.Collection;
     Collection<Route> getRouteNearPoint(Point point);
 
     Event addEventToRoute(Long routeId, Event event);
-
-    Route updateRoute(Long routeId, Route route);
 
     Route removeRoute(long id);
 

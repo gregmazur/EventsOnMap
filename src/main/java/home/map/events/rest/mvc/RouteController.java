@@ -59,7 +59,7 @@ import java.net.URI;
 
     @RequestMapping (method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<RouteResource> createRoute(@RequestBody RouteResource sentRoute) {
-        Route createdRoute = null;
+        Route createdRoute;
         try {
             createdRoute = service.createRoute(sentRoute.toRoute());
             RouteResource createdResource = new RouteResourceAsm().toResource(createdRoute);

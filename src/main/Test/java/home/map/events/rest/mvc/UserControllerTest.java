@@ -4,6 +4,7 @@ import home.map.events.core.entity.UserDetail;
 import home.map.events.core.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -16,7 +17,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 /**
  * Created by greg on 23.08.15.
  */
@@ -24,7 +24,7 @@ public class UserControllerTest {
     @InjectMocks private UserController controller;
     private MockMvc mockMvc;
     @Mock private UserService service;
-
+    private ArgumentCaptor<UserDetail> captor;
     @Before public void setup() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
@@ -57,6 +57,8 @@ public class UserControllerTest {
         mockMvc.perform(get("/profile/1")).andDo(print())
             .andExpect(jsonPath("$.password", is(foundUser.getPassword())))
             .andExpect(jsonPath("$.name", is(foundUser.getName()))).andExpect(status().isOk());
+
+        System.out.print(service.getByID(1L));
     }
 
 }

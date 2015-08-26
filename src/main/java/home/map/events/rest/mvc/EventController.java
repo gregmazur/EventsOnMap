@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by greg on 25.08.15.
  */
-@RequestMapping (name = "/event") @Controller public class EventController {
+@RequestMapping @Controller public class EventController {
+
     private EventService service;
 
     public EventController(EventService service) {
         this.service = service;
     }
 
-    @RequestMapping (value = "/{eventId}",
+    @RequestMapping (value = "/event/{eventId}",
         method = RequestMethod.GET)
     public ResponseEntity<EventResource> getRoute(@PathVariable Long eventId) {
         Event event = service.getById(eventId);

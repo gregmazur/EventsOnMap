@@ -21,7 +21,6 @@ public class RouteResourceAsm extends ResourceAssemblerSupport<Route, RouteResou
     @Override public RouteResource toResource(Route route) {
         RouteResource resource = new RouteResource();
         resource.setName(route.getName());
-        resource.setRouteEvents(route.getRouteEvents());
         resource.setRoutePoints(route.getRoutePoints());
         resource.setComments(route.getComments());
         resource.setCreatedAt(route.getCreatedAt());

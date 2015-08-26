@@ -1,6 +1,9 @@
 package home.map.events.rest.resources;
 
-import home.map.events.core.entity.*;
+import home.map.events.core.entity.Comment;
+import home.map.events.core.entity.Point;
+import home.map.events.core.entity.Route;
+import home.map.events.core.entity.UserDetail;
 import org.springframework.hateoas.ResourceSupport;
 
 import java.util.ArrayList;
@@ -14,7 +17,6 @@ public class RouteResource extends ResourceSupport {
 
     private String name;
     private Collection<Point> routePoints = new ArrayList<Point>();
-    private Collection<Event> routeEvents = new ArrayList<Event>();
     private Collection<Comment> comments = new ArrayList<Comment>();
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
     private UserDetail createdBy;
@@ -28,7 +30,6 @@ public class RouteResource extends ResourceSupport {
         route.setName(name);
 
         route.setRoutePoints(routePoints);
-        route.setRouteEvents(routeEvents);
         route.setCreatedAt(createdAt);
         route.setUsersTagged(usersTagged);
         route.setCreatedBy(createdBy);
@@ -65,14 +66,6 @@ public class RouteResource extends ResourceSupport {
 
     public void setRoutePoints(Collection<Point> routePoints) {
         this.routePoints = routePoints;
-    }
-
-    public Collection<Event> getRouteEvents() {
-        return routeEvents;
-    }
-
-    public void setRouteEvents(Collection<Event> routeEvents) {
-        this.routeEvents = routeEvents;
     }
 
     public Collection<Comment> getComments() {

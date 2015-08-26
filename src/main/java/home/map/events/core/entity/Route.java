@@ -14,9 +14,6 @@ import java.util.Collection;
 
     @ElementCollection private Collection<Point> routePoints = new ArrayList<Point>();
 
-    @OneToMany (cascade = CascadeType.ALL) @JoinTable (name = "\"route_events\"")
-    private Collection<Event> routeEvents = new ArrayList<Event>();
-
     @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
     @JoinTable (name = "route_comments", joinColumns = {
         @JoinColumn (name = "route_id")}, inverseJoinColumns = {@JoinColumn (name = "comment_id")})
@@ -30,10 +27,6 @@ import java.util.Collection;
     public Route(UserDetail createdBy) {
         super();
         setCreatedBy(createdBy);
-    }
-
-    public synchronized void addEvent(Event event) {
-        routeEvents.add(event);
     }
 
     public synchronized void addPoint(Point point) {
@@ -54,14 +47,6 @@ import java.util.Collection;
 
     public void setRoutePoints(Collection<Point> routePoints) {
         this.routePoints = routePoints;
-    }
-
-    public Collection<Event> getRouteEvents() {
-        return routeEvents;
-    }
-
-    public void setRouteEvents(Collection<Event> routeEvents) {
-        this.routeEvents = routeEvents;
     }
 
     public Collection<UserDetail> getUsersTagged() {

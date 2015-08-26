@@ -28,7 +28,7 @@ public class EventResourceAsm extends ResourceAssemblerSupport<Event, EventResou
         resource.add(self);
         //        if(event.get() != null)
         //        {
-        //            res.add((linkTo(BlogController.class).slash(blogEntry.getBlog().getId()).withRel("route")));
+        //            res.add((linkTo(RouteController.class).slash(blogEntry.getBlog().getId()).withRel("route")));
         //        }
         return resource;
     }

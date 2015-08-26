@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by greg on 07.08.15.
  */
@@ -33,7 +35,7 @@ public class RouteDAOTest {
 
     @Test
     public void testGetRoutesCreatedByUser() throws Exception {
-
+        assertEquals(route, dao.getRoutesCreatedByUser(user.getId()).iterator().next());
     }
 
     @Test
@@ -44,6 +46,10 @@ public class RouteDAOTest {
     @Test
     public void testGetRouteContainsName() throws Exception {
         Collection<Route> list = dao.getRouteContainsName("route");
-        System.out.println("CONTAINS NAME" + list);
+        assertEquals(route, list.iterator().next());
+    }
+
+    @Test public void testFindByOne() {
+        assertEquals(route, dao.findOne(route.getId()));
     }
 }

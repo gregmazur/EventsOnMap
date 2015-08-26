@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Event extends BaseEntityAudit {
     @Embedded
     private Point point;
-
+    @Column private Route route;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
     @JoinTable(name = "event_comments", joinColumns = {
         @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "comment_id")})
@@ -23,13 +23,22 @@ public class Event extends BaseEntityAudit {
     @JoinTable(name = "\"users_tagged_at_event\"")
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
-    public Event(UserDetail createdBy, Point point) {
+    public Event(UserDetail createdBy, Point point, Route route) {
         super();
         this.point = point;
+        this.route = route;
         setCreatedBy(createdBy);
     }
 
     public Event() {
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
     public Point getPoint() {

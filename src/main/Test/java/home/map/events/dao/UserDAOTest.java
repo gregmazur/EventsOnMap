@@ -11,7 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 /**
  * Created by greg on 29.07.15.
  */
@@ -57,7 +58,6 @@ public class UserDAOTest {
         user.setName("UPDATED");
         userDAO.saveAndFlush(user);
         UserDetail fromDB = userDAO.findOne(user.getId());
-        assertNotNull(fromDB);
         assertEquals(fromDB, user);
     }
     @Test

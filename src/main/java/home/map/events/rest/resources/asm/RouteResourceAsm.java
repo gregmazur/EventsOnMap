@@ -10,7 +10,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created by greg on 23.08.15.
- */
+ *
+ * creates and make sure a self-link is always added
+ * */
 public class RouteResourceAsm extends ResourceAssemblerSupport<Route, RouteResource> {
 
 

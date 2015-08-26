@@ -12,6 +12,11 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 /**
  * Created by greg on 25.08.15.
  */
+
+
+/**
+ * creates and make sure a self-link is always added
+ */
 public class EventResourceAsm extends ResourceAssemblerSupport<Event, EventResource> {
     public EventResourceAsm() {
         super(EventController.class, EventResource.class);

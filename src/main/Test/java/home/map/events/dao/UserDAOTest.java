@@ -1,7 +1,6 @@
-package Test.home.map.events.dao;
+package home.map.events.dao;
 
 import home.map.events.core.entity.UserDetail;
-import home.map.events.dao.UserDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,8 +61,6 @@ public class UserDAOTest {
     }
     @Test
     public void getAllUsers(){
-        UserDetail user = new UserDetail("remove", "password", "city");
-        userDAO.saveAndFlush(user);
-        System.out.println("PRINTING" + userDAO.findAll());
+        assertEquals(user, userDAO.findAll().iterator().next());
     }
 }

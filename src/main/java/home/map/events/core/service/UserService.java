@@ -1,28 +1,32 @@
 package home.map.events.core.service;
 
+import home.map.events.core.entity.Comment;
 import home.map.events.core.entity.Event;
 import home.map.events.core.entity.Route;
 import home.map.events.core.entity.UserDetail;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Created by greg on 16.07.15.
  */
-@Service
+
 public interface UserService {
 
     UserDetail getByID(Long id);
 
-    Collection<UserDetail> getUsersTaggedInEvent(Event event);
-
-    Collection<UserDetail> getUsersTaggedInRoute(Route route);
-
-    UserDetail updateUser(Long userId, UserDetail updatedUserDetail);
-
-    UserDetail createUser(UserDetail userDetail);
+    UserDetail addUser(UserDetail userDetail);
 
     void deleteUser(UserDetail userDetail);
+
+    Collection<Route> getRoutesCreatedByUser(Long userId);
+
+    Collection<Event> getEventsCreatedByUser(Long userId);
+
+    Collection<Comment> getCommentsLeftByUser(Long userId);
+
+    Route addRoute(Route route, Long userId);
+
+    UserDetail updateUser(UserDetail user);
 
 }

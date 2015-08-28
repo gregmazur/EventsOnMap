@@ -40,7 +40,7 @@ public class UserControllerTest {
     //            createdRoute.setId(1L);
     //            createdRoute.setName("Test Route");
     //
-    //            when(service.createRoute(eq(1L), any(Route.class))).thenReturn(createdRoute);
+    //            when(service.addRoute(eq(1L), any(Route.class))).thenReturn(createdRoute);
     //
     //
     //            mockMvc.perform(post("profile/1/routes").content("{\"name\":\"Test Route\"}")
@@ -59,7 +59,7 @@ public class UserControllerTest {
 
         when(service.getByID(1L)).thenReturn(foundUser);
 
-        mockMvc.perform(get("/profile/1")).andDo(print())
+        mockMvc.perform(get("/user/1")).andDo(print())
             .andExpect(jsonPath("$.password", is(foundUser.getPassword())))
             .andExpect(jsonPath("$.name", is(foundUser.getName()))).andExpect(status().isOk());
 
@@ -73,17 +73,17 @@ public class UserControllerTest {
         userDetail.setName("test");
 
 
-        when(service.createUser(any(UserDetail.class))).thenReturn(userDetail);
+        when(service.addUser(any(UserDetail.class))).thenReturn(userDetail);
 
 
-        mockMvc.perform(post("/profile").content("{\"name\":\"test\",\"password\":\"test\"}")
+        mockMvc.perform(post("/user").content("{\"name\":\"test\",\"password\":\"test\"}")
             .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
-            .andDo(print()).andExpect(header().string("Location", endsWith("/rest/accounts/1")))
+            .andDo(print()).andExpect(header().string("Location", endsWith("user/1")))
             .andExpect(jsonPath("$.name", is(userDetail.getName())))
             .andExpect(status().isCreated());
 
 
-        verify(service).createUser(captor.capture());
+        verify(service).addUser(captor.capture());
 
 
         String password = captor.getValue().getPassword();

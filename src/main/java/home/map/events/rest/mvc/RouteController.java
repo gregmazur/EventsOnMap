@@ -5,14 +5,13 @@ import home.map.events.core.entity.Route;
 import home.map.events.core.service.RouteService;
 import home.map.events.core.service.exceptions.RouteDoesNotExistException;
 import home.map.events.core.service.exceptions.RouteExistsException;
-import home.map.events.core.service.exceptions.RouteNotFoundException;
 import home.map.events.rest.exceptions.BadRequestException;
 import home.map.events.rest.exceptions.ConflictException;
-import home.map.events.rest.exceptions.NotFoundException;
 import home.map.events.rest.resources.EventResource;
 import home.map.events.rest.resources.RouteResource;
 import home.map.events.rest.resources.asm.EventResourceAsm;
 import home.map.events.rest.resources.asm.RouteResourceAsm;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,8 @@ import java.net.URI;
 /**
  * Created by greg on 23.08.15.
  */
-@RequestMapping (value = "/route") @Controller public class RouteController {
+@RequestMapping (value = "/route") @Controller @ExposesResourceFor (Route.class)
+public class RouteController {
     private RouteService service;
 
     public RouteController(RouteService service) {
@@ -57,19 +57,19 @@ import java.net.URI;
         }
     }
 
-    @RequestMapping (method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<RouteResource> createRoute(@RequestBody RouteResource sentRoute) {
-        Route createdRoute;
-        try {
-            createdRoute = service.createRoute(sentRoute.toRoute());
-            RouteResource createdResource = new RouteResourceAsm().toResource(createdRoute);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(URI.create(createdResource.getLink("self").getHref()));
-            return new ResponseEntity<RouteResource>(createdResource, headers, HttpStatus.CREATED);
-        } catch (RouteNotFoundException e) {
-            throw new NotFoundException(e);
-        }
-    }
+    //    @RequestMapping (method = RequestMethod.POST, headers = "Accept=application/json")
+    //    public ResponseEntity<RouteResource> addRoute(@RequestBody RouteResource sentRoute) {
+    //        Route createdRoute;
+    //        try {
+    //            createdRoute = service.addRoute(sentRoute.toRoute());
+    //            RouteResource createdResource = new RouteResourceAsm().toResource(createdRoute);
+    //            HttpHeaders headers = new HttpHeaders();
+    //            headers.setLocation(URI.create(createdResource.getLink("self").getHref()));
+    //            return new ResponseEntity<RouteResource>(createdResource, headers, HttpStatus.CREATED);
+    //        } catch (RouteNotFoundException e) {
+    //            throw new NotFoundException(e);
+    //        }
+    //    }
 
     @RequestMapping (value = "/{routeId}/event",
         method = RequestMethod.POST, headers = "Accept=application/json")

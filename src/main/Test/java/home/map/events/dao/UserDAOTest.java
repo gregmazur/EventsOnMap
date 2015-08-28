@@ -27,7 +27,10 @@ public class UserDAOTest {
     @Rollback (false)
     public void setup()
     {
-        user = new UserDetail("login", "password", "city");
+        user = new UserDetail();
+        user.setLogin("login");
+        user.setCity("city");
+        user.setPassword("password");
         user.setName("name");
         userDAO.saveAndFlush(user);
     }
@@ -62,5 +65,9 @@ public class UserDAOTest {
     @Test
     public void getAllUsers(){
         assertEquals(user, userDAO.findAll().iterator().next());
+    }
+
+    @Test public void findUserByLogin() {
+        assertEquals(user, userDAO.findByLogin("login"));
     }
 }

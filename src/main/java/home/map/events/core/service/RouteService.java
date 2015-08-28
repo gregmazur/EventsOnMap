@@ -4,29 +4,23 @@ import home.map.events.core.entity.Comment;
 import home.map.events.core.entity.Event;
 import home.map.events.core.entity.Point;
 import home.map.events.core.entity.Route;
-import org.springframework.stereotype.Service;
-
-import java.util.Collection;
+import home.map.events.core.service.util.RouteList;
 
 /**
  * Created by greg on 23.08.15.
  */
-@Service public interface RouteService {
+public interface RouteService {
     Route getById(Long id);
 
-    Route createRoute(Route route);
+    RouteList getAllRoutes();
 
-    Route update(long id, Route newRoute);
+    RouteList getAllRoutesOfUser(Long userId);
 
-    Collection<Route> getAllRoutes();
+    RouteList getRouteNearPoint(Point point);
 
-    Collection<Route> getRoutesCreatedByUser(Long userId);
-
-    Collection<Route> getRouteNearPoint(Point point);
-
-    Event addEventToRoute(Long routeId, Event event);
+    Event addEventToRoute(Long routeId, Event event, Long userId);
 
     Route removeRoute(long id);
 
-    Comment addCommentToRoute(Long routeId, Comment comment);
+    Comment addCommentToRoute(Long routeId, String comment, Long userId);
 }

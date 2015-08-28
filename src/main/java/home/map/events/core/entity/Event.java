@@ -15,19 +15,13 @@ public class Event extends BaseEntityAudit {
     @Embedded
     private Point point;
     @Column private Route route;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
-    @JoinTable(name = "event_comments", joinColumns = {
-        @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "comment_id")})
-    private Collection<Comment> comments = new ArrayList<Comment>();
     @OneToMany
     @JoinTable(name = "\"users_tagged_at_event\"")
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
-    public Event(UserDetail createdBy, Point point, Route route) {
+    public Event(Point point) {
         super();
         this.point = point;
-        this.route = route;
-        setCreatedBy(createdBy);
     }
 
     public Event() {
@@ -49,21 +43,7 @@ public class Event extends BaseEntityAudit {
         this.point = point;
     }
 
-    public Collection<Comment> getComments() {
-        return comments;
-    }
 
-    public synchronized void addComment(Comment comment){
-        comments.add(comment);
-    }
-
-    public synchronized void removeComment(Comment comment){
-        comments.remove(comment);
-    }
-
-    public void setComments(Collection<Comment> comments) {
-        this.comments = comments;
-    }
 
     public Collection<UserDetail> getUsersTagged() {
         return usersTagged;

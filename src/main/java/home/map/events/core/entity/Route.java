@@ -14,31 +14,14 @@ import java.util.Collection;
 
     @ElementCollection private Collection<Point> routePoints = new ArrayList<Point>();
 
-    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
-    @JoinTable (name = "route_comments", joinColumns = {
-        @JoinColumn (name = "route_id")}, inverseJoinColumns = {@JoinColumn (name = "comment_id")})
-    private Collection<Comment> comments = new ArrayList<Comment>();
     @OneToMany @JoinTable (name = "\"users_tagged_at_route\"") private Collection<UserDetail>
         usersTagged = new ArrayList<UserDetail>();
 
     public Route() {
     }
 
-    public Route(UserDetail createdBy) {
-        super();
-        setCreatedBy(createdBy);
-    }
-
     public synchronized void addPoint(Point point) {
         routePoints.add(point);
-    }
-
-    public synchronized void addComment(Comment comment) {
-        comments.add(comment);
-    }
-
-    public synchronized void removeComment(Comment comment) {
-        comments.remove(comment);
     }
 
     public Collection<Point> getRoutePoints() {
@@ -57,12 +40,5 @@ import java.util.Collection;
         this.usersTagged = usersTagged;
     }
 
-    public Collection<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Collection<Comment> comments) {
-        this.comments = comments;
-    }
 
 }

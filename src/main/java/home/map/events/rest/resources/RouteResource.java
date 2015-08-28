@@ -1,6 +1,5 @@
 package home.map.events.rest.resources;
 
-import home.map.events.core.entity.Comment;
 import home.map.events.core.entity.Point;
 import home.map.events.core.entity.Route;
 import home.map.events.core.entity.UserDetail;
@@ -17,7 +16,6 @@ public class RouteResource extends ResourceSupport {
 
     private String name;
     private Collection<Point> routePoints = new ArrayList<Point>();
-    private Collection<Comment> comments = new ArrayList<Comment>();
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
     private UserDetail createdBy;
     private UserDetail updatedBy;
@@ -66,14 +64,6 @@ public class RouteResource extends ResourceSupport {
 
     public void setRoutePoints(Collection<Point> routePoints) {
         this.routePoints = routePoints;
-    }
-
-    public Collection<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Collection<Comment> comments) {
-        this.comments = comments;
     }
 
     public Collection<UserDetail> getUsersTagged() {

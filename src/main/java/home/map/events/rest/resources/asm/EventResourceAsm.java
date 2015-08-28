@@ -27,7 +27,6 @@ public class EventResourceAsm extends ResourceAssemblerSupport<Event, EventResou
         resource.setName(event.getName());
         resource.setUpdatedAt(event.getUpdatedAt());
         resource.setUpdatedBy(event.getUpdatedBy());
-        resource.setComments(event.getComments());
         resource.setCreatedAt(event.getCreatedAt());
         resource.setPoint(event.getPoint());
         Link self = linkTo(EventController.class).slash(event.getId()).withSelfRel();

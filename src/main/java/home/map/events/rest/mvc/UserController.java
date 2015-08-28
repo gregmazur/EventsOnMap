@@ -6,6 +6,7 @@ import home.map.events.core.service.exceptions.UserExistsException;
 import home.map.events.rest.exceptions.ConflictException;
 import home.map.events.rest.resources.UserResource;
 import home.map.events.rest.resources.asm.UserResourceAsm;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,8 @@ import java.net.URI;
 /**
  * Created by greg on 23.08.15.
  */
-@RequestMapping @Controller ("/profile") public class UserController {
+@RequestMapping @Controller ("/user") @ExposesResourceFor (UserDetail.class)
+public class UserController {
     private UserService service;
 
     public UserController(UserService service) {
@@ -30,7 +32,7 @@ import java.net.URI;
     @RequestMapping (method = RequestMethod.POST)
     public ResponseEntity<UserResource> createUser(@RequestBody UserResource sentUser) {
         try {
-            UserDetail createdUser = service.createUser(sentUser.toUserDetail());
+            UserDetail createdUser = service.addUser(sentUser.toUserDetail());
             UserResource res = new UserResourceAsm().toResource(createdUser);
             HttpHeaders headers = new HttpHeaders();
             headers.setLocation(URI.create(res.getLink("self").getHref()));
@@ -56,10 +58,10 @@ import java.net.URI;
 
     //    @RequestMapping (value = "/{userId}/routes",
     //        method = RequestMethod.POST)
-    //    public ResponseEntity<RouteResource> createRoute(@PathVariable Long userId,
+    //    public ResponseEntity<RouteResource> addRoute(@PathVariable Long userId,
     //        @RequestBody RouteResource res) {
     //        try {
-    //            Route route = service.createRoute(userId, res.toRoute());
+    //            Route route = service.addRoute(userId, res.toRoute());
     //            RouteResource createdRouteRes = new RouteResourceAsm().toResource(route);
     //            HttpHeaders headers = new HttpHeaders();
     //            headers.setLocation(URI.create(createdRouteRes.getLink("self").getHref()));

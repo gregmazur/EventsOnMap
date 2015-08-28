@@ -8,9 +8,9 @@ package home.map.events.core.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
-@Embeddable
-public class Point {
+@Embeddable public class Point implements Serializable {
     @Column
     private double longitude;
     @Column

@@ -7,33 +7,18 @@ import javax.persistence.*;
 /**
  * Created by greg on 14.07.15.
  */
-@Entity
-@Table(name = "UserDetail")
-@AttributeOverride(name = "id", column = @Column(name = "user_id",
-        nullable = false, columnDefinition = "BIGINT UNSIGNED"))
-public class UserDetail extends BaseEntityAudit {
-    @Column(name = "login",unique = true)
-    private String login;
-    @Column(name = "password")
-    private String password;
-    @Column(name = "city")
-    private String city;
-    @Column
-    private long quantityOfEventsPosted;
-    @Column
-    private long quantityOfRoutesPosted;
-    @Column
-    private long quantityOfCommentsLeft;
-    @Column(name = "role")
-    @Enumerated
-    private UserRole role;
+@Entity @Table (name = "UserDetail")
+@AttributeOverride (name = "id", column = @Column (name = "user_id",
+    nullable = false, columnDefinition = "BIGINT UNSIGNED")) public class UserDetail
+    extends BaseEntityAudit {
+    @Column (name = "login", unique = true) private String login;
+    @Column (name = "password") private String password;
+    @Column (name = "city") private String city;
+    @Column private long quantityOfEventsPosted;
+    @Column private long quantityOfRoutesPosted;
+    @Column private long quantityOfCommentsLeft;
+    @Column (name = "role") @Enumerated private UserRole role;
 
-    public UserDetail(String login, String password, String city) {
-        super();
-        this.login = login;
-        this.password = password;
-        this.city = city;
-    }
 
     public UserDetail() {
     }
@@ -68,6 +53,18 @@ public class UserDetail extends BaseEntityAudit {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public synchronized void increaseQuantityOfEventsPosted() {
+        quantityOfEventsPosted++;
+    }
+
+    public synchronized void increaseQuantityOfRoutesPosted() {
+        quantityOfRoutesPosted++;
+    }
+
+    public synchronized void increaseQuantityOfCommentsLeft() {
+        quantityOfCommentsLeft++;
     }
 
     public long getQuantityOfEventsPosted() {

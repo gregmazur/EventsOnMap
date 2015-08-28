@@ -2,31 +2,28 @@ package home.map.events.core.service;
 
 import home.map.events.core.entity.Comment;
 import home.map.events.core.entity.Event;
-import home.map.events.core.entity.Point;
-import home.map.events.core.entity.UserDetail;
-import org.springframework.stereotype.Service;
+import home.map.events.core.service.util.EventList;
 
 import java.util.Collection;
 
 /**
  * Created by greg on 23.08.15.
  */
-@Service public interface EventService {
+
+public interface EventService {
 
     Event getById(Long id);
 
-    Collection<Event> getAllEvents();
+    EventList getAllEvents();
 
-    Collection<Event> getEventsCreatedByUser(UserDetail user);
+    EventList getAllEventsOfUser(Long userId);
+
+    EventList getAllEventsOfRoute(Long routeId);
 
     Collection<Event> getEventsNearEvent(Long eventId);
 
-    Collection<Event> getEventsNearPoint(Point point);
-
     Event removeEvent(Long id);
 
-    Event updateEvent(Event event, Long id);
-
-    Comment addCommentToEvent(Event event, Comment comment);
+    Comment addCommentToEvent(Long eventId, String comment, Long userId);
 
 }

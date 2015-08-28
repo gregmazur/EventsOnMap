@@ -24,10 +24,14 @@ public class RouteDAOTest {
     @Autowired private RouteDAO dao;
     @Autowired private UserDAO userDAO;
     private Route route;
-    private UserDetail user = new UserDetail("login", "pass", "city");
+    private UserDetail user = new UserDetail();
 
     @Before @Rollback (false) public void setup() {
-        route = new Route(user);
+        user.setLogin("login");
+        user.setCity("city");
+        user.setPassword("password");
+        route = new Route();
+        route.setCreatedBy(user);
         route.setName("route");
         user = userDAO.saveAndFlush(user);
         route = dao.saveAndFlush(route);
@@ -35,7 +39,7 @@ public class RouteDAOTest {
 
     @Test
     public void testGetRoutesCreatedByUser() throws Exception {
-        assertEquals(route, dao.getRoutesCreatedByUser(user.getId()).iterator().next());
+        assertEquals(route, dao.findByCreatedBy(user.getId()).iterator().next());
     }
 
     @Test
@@ -51,5 +55,9 @@ public class RouteDAOTest {
 
     @Test public void testFindByOne() {
         assertEquals(route, dao.findOne(route.getId()));
+    }
+
+    @Test public void findByNameTest() {
+        assertEquals(route, dao.findByName("route"));
     }
 }

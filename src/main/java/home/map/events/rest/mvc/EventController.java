@@ -4,6 +4,7 @@ import home.map.events.core.entity.Event;
 import home.map.events.core.service.EventService;
 import home.map.events.rest.resources.EventResource;
 import home.map.events.rest.resources.asm.EventResourceAsm;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by greg on 25.08.15.
  */
-@RequestMapping @Controller public class EventController {
+@RequestMapping (value = "/event") @Controller @ExposesResourceFor (Event.class)
+public class EventController {
 
     private EventService service;
 

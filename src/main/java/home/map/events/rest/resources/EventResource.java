@@ -1,6 +1,5 @@
 package home.map.events.rest.resources;
 
-import home.map.events.core.entity.Comment;
 import home.map.events.core.entity.Event;
 import home.map.events.core.entity.Point;
 import home.map.events.core.entity.UserDetail;
@@ -20,7 +19,6 @@ public class EventResource extends ResourceSupport {
     private Date createdAt;
     private Date updatedAt;
     private Point point;
-    private Collection<Comment> comments = new ArrayList<Comment>();
     private Collection<UserDetail> usersTagged = new ArrayList<UserDetail>();
 
     public Event toEvent() {
@@ -30,12 +28,14 @@ public class EventResource extends ResourceSupport {
         event.setUpdatedAt(updatedAt);
         event.setUpdatedBy(updatedBy);
         event.setCreatedBy(createdBy);
-        event.setUsersTagged(usersTagged);
         event.setPoint(point);
-        event.setComments(comments);
+        event.setUsersTagged(usersTagged);
         return event;
     }
 
+    public EventResource() {
+
+    }
     public String getName() {
         return name;
     }
@@ -82,14 +82,6 @@ public class EventResource extends ResourceSupport {
 
     public void setPoint(Point point) {
         this.point = point;
-    }
-
-    public Collection<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Collection<Comment> comments) {
-        this.comments = comments;
     }
 
     public Collection<UserDetail> getUsersTagged() {

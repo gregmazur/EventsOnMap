@@ -35,9 +35,12 @@ public class EventDAOTest {
         userDetail = new UserDetail();
         userDetail.setName("Test");
         userDAO.saveAndFlush(userDetail);
-        route = new Route(userDetail);
+        route = new Route();
+        route.setCreatedBy(userDetail);
         Point point = new Point(423, 123);
-        event = new Event(userDetail, point, route);
+        event = new Event(point);
+        event.setCreatedBy(userDetail);
+        event.setRoute(route);
         event.setName("testGetEventsCreatedByUser");
         eventDAO.save(event);
     }
